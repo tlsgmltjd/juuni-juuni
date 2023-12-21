@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -28,5 +29,10 @@ public class JuniController {
     public ResponseEntity<Void> deleteData() {
         juniService.dataDelete();
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<JuniListDto>> getList() {
+        return ResponseEntity.ok(juniService.listGet());
     }
 }

@@ -3,12 +3,14 @@ package com.example.junijuni;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class JuniService {
     private final JuniRepository juniRepository;
+    private final JuniListRepository juniListRepository;
 
     public void execute(Dto dto) {
         juniRepository.deleteAll();
@@ -27,6 +29,12 @@ public class JuniService {
 
     public void dataDelete() {
         juniRepository.deleteById(1L);
+    }
+
+    public List<JuniListDto> listGet() {
+        List<JuniListEntity> juniListEntities = juniListRepository.findAll();
+        return juniListEntities.stream()
+                .map(juniListEntity -> new JuniListDto(juniListEntity.getId(), juniListEntity.getMessage())).toList();
     }
 
 }
