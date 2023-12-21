@@ -20,6 +20,9 @@ public class JuniService {
                         .type(dto.getType())
                         .timestamp(dto.getTimestamp())
                 .build());
+        juniListRepository.save(JuniListEntity.builder()
+                        .message(dto.getMessage())
+                .build());
     }
 
     public Optional<Dto> dataGet() {
