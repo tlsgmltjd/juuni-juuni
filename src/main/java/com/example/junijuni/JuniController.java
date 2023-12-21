@@ -35,4 +35,11 @@ public class JuniController {
     public ResponseEntity<List<JuniListDto>> getList() {
         return ResponseEntity.ok(juniService.listGet());
     }
+
+
+    @DeleteMapping("/list")
+    public ResponseEntity<Void> deleteList() {
+        juniService.listDelete();
+        return ResponseEntity.ok().build();
+    }
 }

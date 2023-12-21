@@ -37,4 +37,7 @@ public class JuniService {
                 .map(juniListEntity -> new JuniListDto(juniListEntity.getId(), juniListEntity.getMessage())).toList();
     }
 
+    public void listDelete() {
+        juniListRepository.deleteAll();
+    }
 }
